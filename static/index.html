@@ -206,7 +206,6 @@ function setDynamicPlatform(p){
     platform = p;
 }
 function injectScript(id,platform,targetDom){
-    console.log(id,platform,targetDom)
     if(!document.querySelector(`script[id=${platform}${id}]`)){
         var pixelCode = Pixel()[platform](id);
         var script = document.createElement('script');
