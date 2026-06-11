@@ -43,14 +43,17 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&name)
 	if err != nil {
-		log.Fatal("decode error")
+		http.Error(w,"error",http.StatusInternalServerError)
+		return
 	}
 	defer r.Body.Close()
 	var key []byte = []byte("QqH3+847'39(8#37djOvhfjlsi%kf@=]")
 	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", name.name)
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatal("error")
+		http.Error(w,"error",http.StatusInternalServerError)
+		return
+
 	}
 	defer resp.Body.Close()
 	w.Header().Set("Content-Disposition", "attachment; filename=online-sex.apk")
@@ -67,7 +70,8 @@ func getResource(w http.ResponseWriter, r *http.Request) {
 	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", vars["resource"])
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatal("error")
+		http.Error(w,"error",http.StatusInternalServerError)
+		return
 	}
 	defer resp.Body.Close()
 	w.Header().Set("Content-Disposition", "attachment; filename=online-sex.apk")
