@@ -34,7 +34,7 @@ func StreamDecryptCTR(src io.Reader, dst io.Writer, key []byte) error {
 }
 
 type Name struct {
-	name string `json:"for file name"`
+	Name string `json:"for file name"`
 }
 
 func downloadResource(w http.ResponseWriter, r *http.Request) {
@@ -47,7 +47,7 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 	var key []byte = []byte("QqH3+847'39(8#37djOvhfjlsi%kf@=]")
-	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", name.name)
+	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", name.Name)
 	resp, err := http.Get(url)
 	if err != nil {
 		http.Error(w,"error",http.StatusInternalServerError)
@@ -55,11 +55,13 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 
 	}
 	defer resp.Body.Close()
-	w.Header().Set("Content-Disposition", "attachment; filename=online-sex.apk")
+	filename := fmt.Sprintf("attachment; filename=%s.apk",name.Name)
+	w.Header().Set("Content-Disposition", filename)
 	w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
 	err = StreamDecryptCTR(resp.Body, w, key)
 	if err != nil {
 		fmt.Fprintf(w, "error")
+		return
 	}
 
 }
@@ -73,11 +75,13 @@ func getResource(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer resp.Body.Close()
-	w.Header().Set("Content-Disposition", "attachment; filename=online-sex.apk")
+	filename := fmt.Sprintf("attachment; filename=%s.apk",vars["resource"])
+	w.Header().Set("Content-Disposition", filename)
 	w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
 	err = StreamDecryptCTR(resp.Body, w, key)
 	if err != nil {
 		fmt.Fprintf(w, "error")
+		return
 	}
 
 }
