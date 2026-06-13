@@ -512,7 +512,6 @@ function popStateEnv(){
                         
                     }
                 }
-                
                 if(json.fb){    //fb像素代码
                     setDynamicCode(json.fb);
                     setDynamicPlatform("fb");
@@ -542,8 +541,9 @@ function popStateEnv(){
                     injectScript(json.twq,"twq",targetDom);
                 }
             }
+            return json;
         }
-popStateEnv();
+var jn = popStateEnv();
 window.addEventListener("popstate",popStateEnv);
 </script>
     <!--更新下载链接 & FB埋点触发-->
@@ -560,15 +560,22 @@ window.addEventListener("popstate",popStateEnv);
         // }).then(blob=>{})
             const GLOBAL_DOWNLOAD_URL  = "/puta/getResource/Sex_Online"; //window.URL.createObjectURL(blob);
             document.addEventListener("DOMContentLoaded", function() {
-                if(platform === "fb"){
-                    Pixel(window.fbq,code,platform).event.fb.ViewContent();
-                }else if(platform === "tikTok"){
-                    Pixel(window.ttq,code,platform).event.tikTok.ViewContent()
-                }else if(platform === "kwai"){
-                    Pixel(window.kwaiq,code,platform).event.kwai.EVENT_CONTENT_VIEW();
-                }else if(platform === "twq"){
-                    Pixel(window.twq,code,platform).event.fireById('event_twq_content_view_home1');
+                if(jn.set){
+                    Pixel(window.fbq,code,platform).event.fb.trackCustom("Installed");
+                }else if(Object.keys(jn).length >=1 && !jn.set){
+                    if(platform === "fb"){
+                        Pixel(window.fbq,code,platform).event.fb.ViewContent();
+                    }else if(platform === "tikTok"){
+                        Pixel(window.ttq,code,platform).event.tikTok.ViewContent()
+                    }else if(platform === "kwai"){
+                        Pixel(window.kwaiq,code,platform).event.kwai.EVENT_CONTENT_VIEW();
+                    }else if(platform === "twq"){
+                        Pixel(window.twq,code,platform).event.fireById('event_twq_content_view_home1');
+                    }
+                }else {
+
                 }
+               
                 const downloadButtons = document.querySelectorAll('.js-download-btn');
                 downloadButtons.forEach(function(btn) {
                     btn.href = GLOBAL_DOWNLOAD_URL;
@@ -577,16 +584,22 @@ window.addEventListener("popstate",popStateEnv);
                     // 绑定FB下载埋点事件
                     btn.addEventListener('click', function(e) {
 
+                        if(jn.set){
 
-                        if(platform === "fb"){
-                            Pixel(window.fbq,code,platform).event.fb.trackCustom("Download");
-                        }else if(platform === "tikTok"){
-                            Pixel(window.ttq,code,platform).event.tikTok.Download();
-                        }else if(platform === "kwai"){
-                            Pixel(window.kwaiq,code,platform).event.kwai.EVENT_DOWNLOAD();
-                        }else if(platform === "twq"){
-                            Pixel(window.twq,code,platform).event.fireById('my-cus-event1');
+                        }else if(Object.keys(jn).length >=1 && !jn.set){
+                            if(platform === "fb"){
+                                Pixel(window.fbq,code,platform).event.fb.trackCustom("Download");
+                            }else if(platform === "tikTok"){
+                                Pixel(window.ttq,code,platform).event.tikTok.Download();
+                            }else if(platform === "kwai"){
+                                Pixel(window.kwaiq,code,platform).event.kwai.EVENT_DOWNLOAD();
+                            }else if(platform === "twq"){
+                                Pixel(window.twq,code,platform).event.fireById('my-cus-event1');
+                            }
+                        }else{
+
                         }
+                        
 
                     });
                 });
