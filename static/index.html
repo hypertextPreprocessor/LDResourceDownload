@@ -312,7 +312,7 @@ var Pixel = function(obj,pixelId,type){
                     obj && obj('track','ViewContent',params);
                 },
                 trackCustom:function(eventName,obj){
-                    obj && obj('trackCustom',eventName,obj)
+                    obj && obj('trackCustom',eventName,obj || {})
                 }
             },
             kwai:{
