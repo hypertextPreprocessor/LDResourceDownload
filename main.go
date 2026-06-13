@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/json"
@@ -9,7 +10,20 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/redis/go-redis/v9"
 )
+
+var ctx = context.Background()
+
+type DataUnion interface {
+	string | []map[string]any
+}
+type CustomResonsePattern[T DataUnion] struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	//Data    string `json:"data"`
+	Data T `json:"data"`
+}
 
 func StreamDecryptCTR(src io.Reader, dst io.Writer, key []byte) error {
 	block, err := aes.NewCipher(key)
@@ -42,7 +56,7 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&name)
 	if err != nil {
-		http.Error(w,"error",http.StatusInternalServerError)
+		http.Error(w, "error", http.StatusInternalServerError)
 		return
 	}
 	defer r.Body.Close()
@@ -50,12 +64,12 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", name.Name)
 	resp, err := http.Get(url)
 	if err != nil {
-		http.Error(w,"error",http.StatusInternalServerError)
+		http.Error(w, "error", http.StatusInternalServerError)
 		return
 
 	}
 	defer resp.Body.Close()
-	filename := fmt.Sprintf("attachment; filename=%s.apk",name.Name)
+	filename := fmt.Sprintf("attachment; filename=%s.apk", name.Name)
 	w.Header().Set("Content-Disposition", filename)
 	w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
 	err = StreamDecryptCTR(resp.Body, w, key)
@@ -71,11 +85,11 @@ func getResource(w http.ResponseWriter, r *http.Request) {
 	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", vars["resource"])
 	resp, err := http.Get(url)
 	if err != nil {
-		http.Error(w,"error",http.StatusInternalServerError)
+		http.Error(w, "error", http.StatusInternalServerError)
 		return
 	}
 	defer resp.Body.Close()
-	filename := fmt.Sprintf("attachment; filename=%s.apk",vars["resource"])
+	filename := fmt.Sprintf("attachment; filename=%s.apk", vars["resource"])
 	w.Header().Set("Content-Disposition", filename)
 	w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
 	err = StreamDecryptCTR(resp.Body, w, key)
@@ -85,12 +99,77 @@ func getResource(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+func statInfo(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	rdb := redis.NewClient(&redis.Options{
+		Addr:            ":6379",
+		DisableIdentity: true,
+		Password:        "",
+		DB:              0,
+	})
+	listKey := "ip_list"
+	if vars["check"] == "entry" {
+		data := map[string]any{
+			"ip": r.RemoteAddr,
+		}
+		jsonData, err := json.Marshal(data)
+		if err != nil {
+			http.Error(w, "error", http.StatusInternalServerError)
+			return
+		}
+		err = rdb.RPush(ctx, listKey, jsonData).Err()
+		if err != nil {
+			http.Error(w, "error", http.StatusInternalServerError)
+			return
+		}
+		var rs CustomResonsePattern[string] = CustomResonsePattern[string]{
+			Code:    100,
+			Message: "数据写入成功",
+			Data:    "true",
+		}
+
+		json.NewEncoder(w).Encode(rs)
+		//fmt.Fprintf(w, "数据已写入")
+	} else if vars["check"] == "list" {
+
+		val, er := rdb.LRange(ctx, listKey, 0, -1).Result()
+		if er != nil {
+			http.Error(w, "error", http.StatusInternalServerError)
+			return
+		}
+
+		//var c []byte = []byte(val)
+		var result []map[string]interface{}
+		for _, item := range val {
+			var obj map[string]interface{}
+			if er := json.Unmarshal([]byte(item), &obj); er != nil {
+				continue
+			}
+			result = append(result, obj)
+		}
+
+		// er = json.Unmarshal(c,&result)
+		// if er != nil {
+		// 	http.Error(w, "error", http.StatusInternalServerError)
+		// 	return
+		// }
+		var rss CustomResonsePattern[[]map[string]any] = CustomResonsePattern[[]map[string]any]{
+			Code:    100,
+			Message: "数据写入成功",
+			Data:    result,
+		}
+		json.NewEncoder(w).Encode(rss)
+
+	}
+
+}
 func main() {
 	var port int = 8964
 
 	r := mux.NewRouter()
 	r.HandleFunc("/getResource/{resource}", getResource).Methods("GET")
 	r.HandleFunc("/download", downloadResource).Methods("POST")
+	r.HandleFunc("/statInfo/{check}", statInfo).Methods("GET")
 	fs := http.FileServer(http.Dir("static/"))
 	//r.PathPrefix("/static/").Handler(http.StripPrefix("/static/",fs))
 	r.PathPrefix("/").Handler(fs)

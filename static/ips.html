@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>访问统计</title>
+    </head>
+    <body>
+        <h1>访问IP列表:</h1>
+        <ul id="list">
+
+        </ul>
+        <script>
+            var ul = document.querySelector("ul#list");
+            fetch("/statInfo/list",{
+                method:"GET"
+            }).then(res=>{
+                if(res.ok){
+                    return res.json()
+                }
+            }).then(json=>{
+                if(json.code==100){
+                    if(json.data && json.data.length){
+                        for(var i=0 ;i<json.data.length;i++){
+                            var liTag = document.createElement("li");
+                            liTag.textContent = json.data[i].ip;
+                            ul.appendChild(liTag)
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
