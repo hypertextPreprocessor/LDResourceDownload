@@ -7,7 +7,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 	"github.com/redis/go-redis/v9"
@@ -109,8 +111,9 @@ func statInfo(w http.ResponseWriter, r *http.Request) {
 	})
 	listKey := "ip_list"
 	if vars["check"] == "entry" {
+		ip := getRealIP(r)
 		data := map[string]any{
-			"ip": r.RemoteAddr,
+			"ip": ip,
 		}
 		jsonData, err := json.Marshal(data)
 		if err != nil {
@@ -176,4 +179,30 @@ func main() {
 	fmt.Printf("Server Started at Port %d\n", port)
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 
+}
+func getRealIP(r *http.Request) string {
+	// 1. 优先尝试获取 X-Forwarded-For
+	// 格式通常是: "client_ip, proxy1_ip, proxy2_ip"
+	xff := r.Header.Get("X-Forwarded-For")
+	if xff != "" {
+		ips := strings.Split(xff, ",")
+		realIP := strings.TrimSpace(ips[0])
+		if realIP != "" {
+			return realIP
+		}
+	}
+
+	// 2. 如果 XFF 为空，尝试获取 X-Real-IP
+	realIP := r.Header.Get("X-Real-IP")
+	if realIP != "" {
+		return strings.TrimSpace(realIP)
+	}
+
+	// 3. 最后获取直接连接的 IP (包含端口号，所以需要 SplitHostPort)
+	ip, _, err := net.SplitHostPort(r.RemoteAddr)
+	if err != nil {
+		// 如果 r.RemoteAddr 没有端口或者格式异常，直接返回原始值
+		return r.RemoteAddr
+	}
+	return ip
 }
