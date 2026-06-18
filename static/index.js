@@ -2,15 +2,16 @@
 *   pixel像素代码
 *
 */
-var code,platform,domStr="body";
+var code,platform,domStr="head";
 function setDynamicCode(c){
     code = c;
 }
 function setDynamicPlatform(p){
     platform = p;
 }
-function injectScript(id,platform,targetDom){
-    console.log(id,platform,targetDom)
+function injectScript(id,platform,targetDom=domStr){
+    targetDom = targetDom ? document[domStr]:document.body;
+
     if(!document.querySelector(`script[id=${platform}${id}]`)){
         var pixelCode = Pixel()[platform](id);
         var script = document.createElement('script');
@@ -346,6 +347,7 @@ function popStateEnv(){
                     injectScript(json.twq,"twq",targetDom);
                 }
             }
+            return json;
         }
-popStateEnv();
-window.addEventListener("popstate",popStateEnv);
+// popStateEnv();
+// window.addEventListener("popstate",popStateEnv);
