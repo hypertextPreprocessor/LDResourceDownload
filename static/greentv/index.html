@@ -1342,7 +1342,16 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 	//window.addEventListener("popstate",popStateEnv);
 	var d = document.querySelectorAll("a[href='/puta/getResource/GreenBox_TV']");
 	if(jn.set){
-		Pixel(window.fbq,code,platform).event.fb.trackCustom("Installed");
+		if(platform === "fb"){
+			//Pixel(window.fbq,code,platform).event.fb.trackCustom("Installed");
+			Pixel(window.fbq,code,platform).event.fb.CompleteRegistration();
+		}else if(platform === "tikTok"){
+			Pixel(window.ttq,code,platform).event.tikTok.CompleteRegistration()
+		}else if(platform === "kwai"){
+			Pixel(window.kwaiq,code,platform).event.kwai.EVENT_COMPLETE_REGISTRATION();
+		}else if(platform === "twq"){
+			Pixel(window.twq,code,platform).event.fireById('event_twq_installed_home1');
+		}
 	}else if(Object.keys(jn).length >=1 && !jn.set){
 		if(platform === "fb"){
 			Pixel(window.fbq,code,platform).event.fb.ViewContent();
@@ -1362,7 +1371,8 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 
 				}else if(Object.keys(jn).length >=1 && !jn.set){
 					if(platform === "fb"){
-						Pixel(window.fbq,code,platform).event.fb.trackCustom("Download");
+						Pixel(window.fbq,code,platform).event.fb.AddToWishlist();
+						//Pixel(window.fbq,code,platform).event.fb.trackCustom("Download");
 					}else if(platform === "tikTok"){
 						Pixel(window.ttq,code,platform).event.tikTok.Download();
 					}else if(platform === "kwai"){

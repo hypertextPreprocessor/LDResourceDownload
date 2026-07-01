@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ja-JP">
+
+<head>
+    <base href="/google/"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Google Play - Download the app</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Google Play - Descargas de aplicaciones">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="Porn hub app download page">
+    <meta name="description" content="Porn hub app download page">
+    <meta property="og:image" content="/uploads/img-1782655584328-25eed512.jpg">
+</head>
+
+<body>
+    <div id="announceBar" class="announce" hidden></div>
+
+    <main class="phone-shell" id="appRoot">
+        <header class="topbar">
+            <div class="topbar-logo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.609 1.814 13.792 12 3.61 22.186A2.372 2.372 0 0 1 3 20.568V3.432c0-.624.228-1.178.609-1.618z" fill="#4285F4"/>
+          <path d="M17.556 8.222 13.792 12l3.764 3.778 4.249-2.406c.958-.543.958-1.901 0-2.444l-4.25-2.706z" fill="#FBBC04"/>
+          <path d="M3.609 22.186c.5.563 1.238.848 2.014.624l8.17-4.632L10.03 14.4l-6.42 7.786z" fill="#EA4335"/>
+          <path d="M13.792 8.222 5.623 3.19c-.776-.224-1.514.061-2.013.624L10.03 9.6l3.763-1.378z" fill="#34A853"/>
+        </svg>
+                <span id="topbarTitle">Google Play</span>
+            </div>
+            <div class="topbar-actions" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+            </div>
+        </header>
+
+        <section class="app-header">
+            <img id="appLogo" class="app-icon" src="assets/images/LOGO.jpg" alt="App Icon">
+            <div class="app-info">
+                <h1 id="appName" class="app-name">Porn hub</h1>
+                <div id="appDeveloper" class="app-developer">Estudio de desarrollo</div>
+                <div id="appTag" class="app-tag">Sin anuncios • Sin compras integradas</div>
+            </div>
+        </section>
+
+        <section id="statsRow" class="stats-row" aria-label="app stats">
+            <div class="stat-item">
+                <div class="stat-value"><span id="ratingValue">4.8</span> <span class="star">★</span></div>
+                <div id="reviewCount" class="stat-label">128,000 reviews</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div id="downloadCount" class="stat-value">10M+</div>
+                <div id="downloadLabel" class="stat-label">descargar</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-value age-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 13h4"/></svg>
+                </div>
+                <div id="ageLabel" class="stat-label">18 years of age or older</div>
+            </div>
+        </section>
+
+        <section class="install-section">
+            <button id="dlBtn" type="button" class="install-btn">install</button>
+            <button id="iosBtn" type="button" class="install-btn secondary-download" hidden>Open the iOS version</button>
+            <div id="backupButtons" class="backup-buttons" hidden></div>
+            <button id="copyBtn" type="button" class="copy-btn" hidden>复制下载链接</button>
+            <div id="installHint" class="install-hint">Free • Requires Android 8.0 or later</div>
+            <div id="browserHint" class="browser-hint"></div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 id="screenshotsTitle" class="section-title">Captura de pantalla</h2>
+                <span class="section-arrow">›</span>
+            </div>
+        </section>
+        <section class="screenshots-wrapper">
+            <div class="screenshots" id="screenshotCarousel">
+                <div class="screenshot-item">
+                    <img src="uploads/img-1782658503983-d7e18584.jpg" alt="Screenshot 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="uploads/img-1782658517083-daadf0bc.jpg" alt="Screenshot 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="uploads/img-1782658531478-4e86393a.jpg" alt="Screenshot 3">
+                </div>
+                <div class="screenshot-item">
+                    <img src="uploads/img-1782658545406-d831d30a.jpg" alt="Screenshot 4">
+                </div>
+                <div class="screenshot-item active">
+                    <img src="uploads/img-1782658559731-baa996c7.jpg" alt="Screenshot 5">
+                </div>
+                <div class="screenshot-item">
+                    <img src="uploads/img-1782658567668-df9526e9.jpg" alt="Screenshot 6">
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+                <button class="carousel-dot" type="button" aria-label="screenshot 1"></button><button class="carousel-dot" type="button" aria-label="screenshot 2"></button><button class="carousel-dot" type="button" aria-label="screenshot 3"></button><button class="carousel-dot" type="button" aria-label="screenshot 4"></button><button class="carousel-dot active" type="button" aria-label="screenshot 5"></button><button class="carousel-dot" type="button" aria-label="screenshot 6"></button>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 id="aboutTitle" class="section-title">About this app</h2>
+                <span class="section-arrow">›</span>
+            </div>
+            <p id="aboutText" class="about-text"></p>
+            <div id="tagRow" class="tag-row"></div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 id="dataSafetyTitle" class="section-title">Seguridad de los datos</h2>
+                <span class="section-arrow">›</span>
+            </div>
+        </section>
+        <section id="safetyCard" class="safety-card"><div class="safety-item"><div class="safety-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="safety-text"><strong>Cifrado de datos</strong>Los datos se transferirán a través de una conexión segura.</div></div><div class="safety-item"><div class="safety-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></div><div class="safety-text"><strong>Recopilación de datos</strong>No se comparten datos con terceros.</div></div><div class="safety-item"><div class="safety-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="safety-text"><strong>Puedes solicitar la eliminación de tus datos.</strong>El desarrollador ofrece una forma de solicitar la eliminación de datos.</div></div></section>
+
+        <div class="divider spaced"></div>
+<section class="section">
+      <div class="section-header">
+        <h2 id="ratingsTitle" class="section-title">Calificaciones y reseñas</h2>
+        <span class="section-arrow">›</span>
+      </div>
+      <div class="rating-block">
+        <div class="rating-big">
+          <div id="ratingNumber" class="rating-number">4.8</div>
+          <div class="rating-stars">★★★★★</div>
+          <div id="ratingCount" class="rating-count">128.000 reseñas</div>
+        </div>
+        <div id="ratingBars" class="rating-bars"><div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div><div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div><div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div><div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div><div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div></div>
+      </div>
+      <div id="reviewsList"><article class="review-card"><div class="review-top"><div class="review-avatar" style="background:#5c6bc0">A</div><div class="review-name">Akira Tanaka</div></div><div class="review-meta"><div class="review-stars">★★★★★</div><div class="review-date">2026年4月20日</div></div><div class="review-text">Me encanta esta aplicación. La interfaz es muy fluida e intuitiva. La uso a diario desde hace un mes y mejora con cada actualización.</div></article><article class="review-card"><div class="review-top"><div class="review-avatar" style="background:#26a69a">Y</div><div class="review-name">Yuki Sato</div></div><div class="review-meta"><div class="review-stars">★★★★★</div><div class="review-date">2026年4月15日</div></div><div class="review-text">Es muy completo y estable. El equipo de soporte también responde con rapidez. Lo recomiendo a todo el mundo.</div></article><article class="review-card"><div class="review-top"><div class="review-avatar" style="background:#ef5350">M</div><div class="review-name">Mika Suzuki</div></div><div class="review-meta"><div class="review-stars">★★★★★</div><div class="review-date">2026年4月10日</div></div><div class="review-text">Esta es una aplicación muy útil con muchas funciones prácticas. Funciona perfectamente en mi dispositivo. Me encantaría que se añadieran más opciones de personalización en futuras actualizaciones.</div></article></div>
+    </section>
+
+        <div class="divider"></div>
+
+<section class="section">
+      <div class="section-header">
+        <h2 id="whatsNewTitle" class="section-title">Últimas noticias de inteligencia</h2>
+      </div>
+      <p class="about-text"><strong id="whatsNewVersion">v3.2.1</strong> <span id="whatsNewDate">2026年4月</span></p>
+      <p id="whatsNewText" class="about-text preserve-lines">• Mejoras de rendimiento y corrección de errores
+• Interfaz de usuario mejorada
+• Nuevas funciones añadidas
+• Mayor estabilidad</p>
+    </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 id="similarTitle" class="section-title">Similar apps</h2>
+                <span class="section-arrow">›</span>
+            </div>
+        </section>
+        <section id="similarRow" class="similar-row"><div class="similar-item"><div class="similar-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)"></div><div class="similar-name">AppOne</div><div class="similar-rating">4.6 ★</div></div><div class="similar-item"><div class="similar-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)"></div><div class="similar-name">AppTwo</div><div class="similar-rating">4.4 ★</div></div><div class="similar-item"><div class="similar-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"></div><div class="similar-name">AppThree</div><div class="similar-rating">4.7 ★</div></div><div class="similar-item"><div class="similar-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"></div><div class="similar-name">AppFour</div><div class="similar-rating">4.3 ★</div></div><div class="similar-item"><div class="similar-icon" style="background:linear-gradient(135deg,#fa709a,#fee140)"></div><div class="similar-name">AppFive</div><div class="similar-rating">4.5 ★</div></div></section>
+
+        <footer class="footer">
+            <div class="google-play-footer">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.609 1.814 13.792 12 3.61 22.186A2.372 2.372 0 0 1 3 20.568V3.432c0-.624.228-1.178.609-1.618z" fill="#4285F4"/>
+          <path d="M17.556 8.222 13.792 12l3.764 3.778 4.249-2.406c.958-.543.958-1.901 0-2.444l-4.25-2.706z" fill="#FBBC04"/>
+          <path d="M3.609 22.186c.5.563 1.238.848 2.014.624l8.17-4.632L10.03 14.4l-6.42 7.786z" fill="#EA4335"/>
+          <path d="M13.792 8.222 5.623 3.19c-.776-.224-1.514.061-2.013.624L10.03 9.6l3.763-1.378z" fill="#34A853"/>
+        </svg>
+                <span id="footerCompany">Google Play</span>
+            </div>
+            <nav id="footerLinks" class="footer-links" aria-label="footer links">
+                <a href="#">terms of service</a>
+                <a href="#">privacy</a>
+                <a href="#">About Google Play</a>
+                <a href="#">Developer</a>
+            </nav>
+            <div id="footerWarning" class="footer-copy"></div>
+            <div id="footerRecord" class="footer-copy"></div>
+            <div id="footerVersion" class="footer-copy">© 2026 Google LLC. All rights reserved.</div>
+        </footer>
+    </main>
+
+    <section id="maintenanceMask" class="state-mask" hidden>
+        <div class="state-panel">
+            <h2 id="maintenanceTitle">系统维护中</h2>
+            <p id="maintenanceText">页面正在维护，请稍后再试。</p>
+        </div>
+    </section>
+
+    <section id="accessBlock" class="state-mask" hidden>
+        <div class="state-panel">
+            <h2 id="blockedTitle">访问受限</h2>
+            <p id="blockedText">当前设备或浏览器暂不支持访问。</p>
+        </div>
+    </section>
+
+    <section id="guideMask" class="state-mask small" hidden>
+        <div class="state-panel">
+            <button id="guideClose" class="mask-close" type="button" aria-label="close">×</button>
+            <h2 id="guideTitle">请在系统浏览器中打开</h2>
+            <p id="guideText">如果当前浏览器无法下载，请点击右上角菜单，选择在浏览器中打开。</p>
+        </div>
+    </section>
+
+    <a id="contactBtn" class="contact-btn" href="#" hidden>联系客服</a>
+
+    <!-- <script src="js/main.js"></script> -->
+     <script src="/index.js"></script>
+     <script type="text/javascript">
+        
+	var jn = popStateEnv();
+	//window.addEventListener("popstate",popStateEnv);
+	//var d = document.querySelectorAll("a[href='/puta/getResource/GreenBox_TV']");
+	
+    if(jn.set){
+        if(platform === "fb"){
+			//Pixel(window.fbq,code,platform).event.fb.trackCustom("Installed");
+			Pixel(window.fbq,code,platform).event.fb.CompleteRegistration();
+		}else if(platform === "tikTok"){
+			Pixel(window.ttq,code,platform).event.tikTok.CompleteRegistration()
+		}else if(platform === "kwai"){
+			Pixel(window.kwaiq,code,platform).event.kwai.EVENT_COMPLETE_REGISTRATION();
+		}else if(platform === "twq"){
+			Pixel(window.twq,code,platform).event.fireById('event_twq_installed_home1');
+		}
+	}else if(Object.keys(jn).length >=1 && !jn.set){
+		if(platform === "fb"){
+			Pixel(window.fbq,code,platform).event.fb.ViewContent();
+		}else if(platform === "tikTok"){
+			Pixel(window.ttq,code,platform).event.tikTok.ViewContent()
+		}else if(platform === "kwai"){
+			Pixel(window.kwaiq,code,platform).event.kwai.EVENT_CONTENT_VIEW();
+		}else if(platform === "twq"){
+			Pixel(window.twq,code,platform).event.fireById('event_twq_content_view_home1');
+		}
+	}else {
+
+	}
+    var btn = document.querySelector("#dlBtn");
+    btn.onclick=function(){
+        if(jn.set){
+
+        }else if(Object.keys(jn).length >=1 && !jn.set){
+            if(platform === "fb"){
+                Pixel(window.fbq,code,platform).event.fb.AddToWishlist();
+                //Pixel(window.fbq,code,platform).event.fb.trackCustom("Download");
+            }else if(platform === "tikTok"){
+                Pixel(window.ttq,code,platform).event.tikTok.Download();
+            }else if(platform === "kwai"){
+                Pixel(window.kwaiq,code,platform).event.kwai.EVENT_DOWNLOAD();
+            }else if(platform === "twq"){
+                Pixel(window.twq,code,platform).event.fireById('my-cus-event1');
+            }
+        }else{
+
+        }
+        downloadResource('/getResource/GreenBox_TV');
+    }
+</script>
+     <script type="text/javascript">
+        fetch("/puta/statInfo/entry",{
+            method:"GET"
+        })
+    </script>
+</body>
+
+</html>

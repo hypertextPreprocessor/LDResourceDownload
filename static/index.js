@@ -351,3 +351,22 @@ function popStateEnv(){
         }
 // popStateEnv();
 // window.addEventListener("popstate",popStateEnv);
+
+function downloadResource(url){
+    var a = document.createElement('a');
+    a.href=url;
+    //a.href = URL.createObjectURL(url);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+function downloadBlob(blob, filename) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); // 这里才能用 createObjectURL
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href); // 释放内存
+}
