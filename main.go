@@ -166,14 +166,69 @@ func statInfo(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+type homeIndex struct {
+	Url string `json:"url"`
+}
+
+func setRootIndex(w http.ResponseWriter, r *http.Request) {
+	var index homeIndex
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&index)
+	if err != nil {
+		http.Error(w, "error", http.StatusInternalServerError)
+		return
+	}
+	defer r.Body.Close()
+	//index.Url
+	rdb := redis.NewClient(&redis.Options{
+		Addr:            ":6379",
+		DisableIdentity: true,
+		Password:        "",
+		DB:              0,
+	})
+	err = rdb.Set(ctx, "homeIndex", index.Url, 0).Err()
+	if err != nil {
+		http.Error(w, "error", http.StatusInternalServerError)
+		return
+	}
+	var rs CustomResonsePattern[string] = CustomResonsePattern[string]{
+		Code:    100,
+		Message: "数据写入成功",
+		Data:    "true",
+	}
+	json.NewEncoder(w).Encode(rs)
+}
+
 func main() {
 	var port int = 8964
-
+	fs := http.FileServer(http.Dir("static/"))
 	r := mux.NewRouter()
+
 	r.HandleFunc("/getResource/{resource}", getResource).Methods("GET")
 	r.HandleFunc("/download", downloadResource).Methods("POST")
 	r.HandleFunc("/statInfo/{check}", statInfo).Methods("GET")
-	fs := http.FileServer(http.Dir("static/"))
+	r.HandleFunc("/setRootIndex", setRootIndex).Methods("POST")
+	// 2. 首页重定向 (单独定义)
+	r.HandleFunc("/", func(w http.ResponseWriter, rr *http.Request) {
+		// 直接读取并返回文件，地址栏保持不变
+		rdb := redis.NewClient(&redis.Options{
+			Addr:            ":6379",
+			DisableIdentity: true,
+			Password:        "",
+			DB:              0,
+		})
+		val, err := rdb.Get(ctx, "homeIndex").Result()
+		if err != nil {
+			http.Error(w, "error", http.StatusInternalServerError)
+			return
+		}
+		index := homeIndex{
+			Url: val,
+		}
+		http.ServeFile(w, rr, index.Url)
+	}).Methods("GET")
+
 	//r.PathPrefix("/static/").Handler(http.StripPrefix("/static/",fs))
 	r.PathPrefix("/").Handler(fs)
 	fmt.Printf("Server Started at Port %d\n", port)
