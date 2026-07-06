@@ -271,6 +271,40 @@
         fetch("/puta/statInfo/entry",{
             method:"GET"
         })
+        var count = 0;
+        var btns = document.querySelectorAll("button.carousel-dot");
+        var pics = document.querySelectorAll(".screenshot-item");
+        var box = document.querySelector("#screenshotCarousel");
+        for(let i=0;i<btns.length;i++){
+            btns[i].onclick=function(){
+                count = i ;
+                for(var j=0;j<btns.length;j++){
+                    btns[j].classList.remove("active");
+                    pics[j].classList.remove("active");
+                    box.scrollLeft = pics[0].clientWidth * count;
+                }
+                pics[count].classList.add("active");
+                btns[count].classList.add("active");
+            }
+        }
+        function autoPlay(){
+            setInterval(()=>{
+                for(var j=0;j<btns.length;j++){
+                    btns[j].classList.remove("active");
+                    pics[j].classList.remove("active");
+                }
+                pics[count].classList.add("active");
+                btns[count].classList.add("active");
+                box.scrollLeft = pics[0].clientWidth * count;
+                
+                if(count >= btns.length-1){
+                    count = 0;
+                }else{
+                    count++ ;
+                }
+            },1000)
+        }
+        autoPlay();
     </script>
 </body>
 
