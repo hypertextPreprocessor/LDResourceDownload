@@ -9,6 +9,9 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 
 	"github.com/gorilla/mux"
@@ -168,7 +171,7 @@ func statInfo(w http.ResponseWriter, r *http.Request) {
 }
 
 type homeIndex struct {
-	Url string `json:"url"`
+	Url string `json:"url"` //eg "static/greentv/"
 }
 
 func setRootIndex(w http.ResponseWriter, r *http.Request) {
@@ -199,7 +202,68 @@ func setRootIndex(w http.ResponseWriter, r *http.Request) {
 	}
 	json.NewEncoder(w).Encode(rs)
 }
+func videoHandleFunc(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	videoName := vars["name"]
 
+	var playlistPath string
+	ext := filepath.Ext(videoName)
+	if ext == "" {
+		http.Error(w, "无效的文件名格式", http.StatusBadRequest)
+		return
+	}
+	matchName := strings.TrimSuffix(videoName, ext)
+	outputDir := filepath.Join("static", "videos", matchName)
+	playlistPath = filepath.Join(outputDir, "manifest.mpd")
+	//inputVideo := filepath.Join("uploads", videoName+".mp4")
+
+	if _, err := os.Stat(playlistPath); err == nil {
+		mpdUrl := fmt.Sprintf("/static/videos/%s/manifest.mpd", matchName)
+		w.Header().Set("Content-Type", "application/json")
+		//fmt.Fprintf(w, `{"url": "%s"}`, mpdUrl)
+		var rs CustomResonsePattern[string] = CustomResonsePattern[string]{
+			Code:    100,
+			Message: "success",
+			Data:    mpdUrl,
+		}
+		json.NewEncoder(w).Encode(rs)
+		return
+	}
+
+	if err := os.MkdirAll(outputDir, 0755); err != nil { //不存在会创建
+		http.Error(w, "error", http.StatusInternalServerError)
+		return
+	}
+	cdnVideoUrl := "https://258b.tv/resource/videos/" + videoName
+
+	cmd := exec.Command(
+		"ffmpeg",
+		"-i", cdnVideoUrl,
+		"-c:v", "libx264",
+		"-c:a", "aac",
+		"-f", "dash",
+		"-init_seg_name", "init-stream$RepresentationID$.m4s",
+		"-media_seg_name", "chunk-stream$RepresentationID$-$Number%05d$.m4s",
+		playlistPath,
+	)
+	output, err := cmd.CombinedOutput()
+	//if err := cmd.Run();
+	if err != nil {
+		//http.Error(w, "视频转码切片失败: "+err.Error(), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("转码失败: %v, 详情: %s", err, string(output)), http.StatusInternalServerError)
+		return
+	}
+	mpdUrl := fmt.Sprintf("/static/videos/%s/manifest.mpd", matchName)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	//fmt.Fprintf(w, `{"url": "%s"}`, mpdUrl)
+	var rs CustomResonsePattern[string] = CustomResonsePattern[string]{
+		Code:    100,
+		Message: "success",
+		Data:    mpdUrl,
+	}
+	json.NewEncoder(w).Encode(rs)
+}
 func main() {
 	var port int = 8964
 	fs := http.FileServer(http.Dir("static/"))
@@ -209,6 +273,7 @@ func main() {
 	r.HandleFunc("/download", downloadResource).Methods("POST")
 	r.HandleFunc("/statInfo/{check}", statInfo).Methods("GET")
 	r.HandleFunc("/setRootIndex", setRootIndex).Methods("POST")
+	r.HandleFunc("/video/{name}", videoHandleFunc).Methods("GET")
 	// 2. 首页重定向 (单独定义)
 	r.HandleFunc("/", func(w http.ResponseWriter, rr *http.Request) {
 		// 直接读取并返回文件，地址栏保持不变
