@@ -72,7 +72,7 @@ var Pixel = function(obj,pixelId,type){
                 AddToCart:function(params){
                     obj && obj('track','AddToCart',params);
                 },
-                AddToWishlist:function(){
+                AddToWishlist:function(params){
                     obj && obj('track','AddToWishlist',params);
                 },
                 CompleteRegistration:function(){

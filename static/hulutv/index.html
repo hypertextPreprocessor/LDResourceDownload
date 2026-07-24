@@ -3724,7 +3724,7 @@ U.S. residents, 18+ only. Includes certain combinations of Disney+, Hulu, and ES
       }else {
 
       }
-      document.querySelector(".toaster.toaster--active.toaster--mobile-only").classList.add("luludownloadbtn")
+      document.querySelector(".toaster.toaster--active.toaster--mobile-only") && document.querySelector(".toaster.toaster--active.toaster--mobile-only").classList.add("luludownloadbtn")
       var btns = document.querySelectorAll(".luludownloadbtn")
       for(let i=0;i<btns.length;i++){
         btns[i].onclick=function(){
