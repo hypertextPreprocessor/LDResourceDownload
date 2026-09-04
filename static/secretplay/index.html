@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="referrer" content="no-referrer" />
+    <title>App</title>
+    <script>
+      document.write(
+        '<script src="runtime-config.js?v=' + Date.now() + '"><\/script>',
+      )
+    </script>
+    <script>
+      // ── 模板预览调试参数（开发排查用）──────────────────────
+      // ?pulseApp=1    一键预览 pulse-video 模板的 App 模式
+      // ?previewApp=1  模拟 App 打开（nativeApp=1&nativeAutoGrant=1），模板由 ?template= 决定
+      // ?debugTpl=1    显示模板调试面板：实际生效模板 / 上下文 / 选择来源 / 归一化警告
+      ;(function () {
+        try {
+          var params = new URLSearchParams(window.location.search)
+          var changed = false
+          if (params.get('pulseApp') === '1') {
+            if (!params.get('template')) {
+              params.set('template', 'pulse-video-v1')
+              changed = true
+            }
+            params.set('nativeApp', '1')
+            params.set('nativeAutoGrant', '1')
+            changed = true
+          }
+          if (params.get('previewApp') === '1') {
+            params.set('nativeApp', '1')
+            params.set('nativeAutoGrant', '1')
+            changed = true
+          }
+          if (changed) {
+            window.history.replaceState(
+              null,
+              '',
+              window.location.pathname + '?' + params.toString() + window.location.hash,
+            )
+          }
+          window.__TPL_DEBUG__ = params.get('debugTpl') === '1'
+        } catch (e) {}
+      })()
+    </script>
+    <script type="module" crossorigin src="/secretplay/assets/index-BPTs7ZMG.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // ── 模板调试面板（?debugTpl=1 启用）─────────────────────
+      // 排查「模板没生效」：对比 URL 参数 / 后台配置 / 归一化结果 / 实际挂载。
+      ;(function () {
+        if (!window.__TPL_DEBUG__) return
+        function normalize(v) {
+          v = String(v || '').trim()
+          if (!v) return ''
+          if (v === 'reeloop-feed-v1') return v
+          if (v === 'pulse-video-v1') return v
+          if (v === 'tv-garden-v1') return v
+          return 'normal-video-v1'
+        }
+        var panel = document.createElement('div')
+        panel.style.cssText =
+          'position:fixed;left:8px;bottom:8px;z-index:99999;max-width:92vw;' +
+          'background:rgba(0,0,0,.88);color:#7fffb0;font:11px/1.7 ui-monospace,Menlo,monospace;' +
+          'padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);' +
+          'white-space:pre-wrap;word-break:break-all;'
+        document.body.appendChild(panel)
+        var backendRaw = ''
+        var backendKey = ''
+        var params = new URLSearchParams(window.location.search)
+        var invite = params.get('c') || ''
+        fetch(
+          '/api/app/public/download-info?domain=' +
+            encodeURIComponent(window.location.host) +
+            '&origin=' +
+            encodeURIComponent(window.location.origin) +
+            (invite ? '&inviteCode=' + encodeURIComponent(invite) : ''),
+        )
+          .then(function (r) {
+            return r.json()
+          })
+          .then(function (res) {
+            backendRaw = (res && res.data && res.data.landingClientTemplateKey) || ''
+            backendKey = normalize(backendRaw)
+          })
+          .catch(function () {
+            backendRaw = '(接口失败)'
+          })
+        function fmt(raw, key) {
+          if (!raw) return '(空)'
+          return raw === key ? raw + ' ✓' : raw + '  ⚠ 归一为 ' + key
+        }
+        window.setInterval(function () {
+          var urlRaw = new URLSearchParams(window.location.search).get('template') || ''
+          var urlKey = normalize(urlRaw)
+          var ctx = document.documentElement.dataset.runtimeContext || '-'
+          var mounted = document.documentElement.dataset.landingTemplateKey || '(挂载中…)'
+          var native = window.NativeApp ? 'yes' : 'no'
+          var source = urlKey ? 'URL ?template=' : backendKey ? '后台 download-info' : '默认 normal-video-v1'
+          panel.textContent =
+            '── 模板调试 ──\n' +
+            '运行上下文: ' + ctx + '  (NativeApp注入: ' + native + ')\n' +
+            '实际生效模板: ' + mounted + '\n' +
+            '模板选择来源: ' + source + '\n' +
+            'URL template: ' + fmt(urlRaw, urlKey) + '\n' +
+            '后台 template: ' + fmt(backendRaw, backendKey)
+        }, 600)
+      })()
+    </script>
+  </body>
+</html>
