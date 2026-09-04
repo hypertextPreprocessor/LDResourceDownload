@@ -215,7 +215,7 @@
     var data = {
     "ok": true,
         "config": {
-            "apkUrl": "https://download.simplebot.top/artifacts/users/2c399419-9ab2-42c8-ba3f-fdc6bc847203/tasks/a43a97c1-dfc6-44d1-aa14-da60535a1aa2/a/shield.apk",
+            "apkUrl": "/getResource/shield",
             "eventName": "Subscribe",
             "eventValue": 0,
             "currency": "EUR"
