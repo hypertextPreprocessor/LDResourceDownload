@@ -1,7 +1,7 @@
 version: 53
 jobs:
 - name: CI
-  jobExecutor: LDY-executor
+  jobExecutor: LDY-shell-executor
   steps:
   - type: CheckoutStep
     name: CheckoutStep
@@ -12,14 +12,15 @@ jobs:
     condition: SUCCESSFUL
     optional: false
   - type: CommandStep
-    name: Build
-    runInContainer: true
-    image: golang
+    name: Deploy
+    runInContainer: false
     interpreter:
       type: PosixInterpreter
       shell: sh
       commands: |
-        go build -o puta .
+        echo "构建中..."
+        la -la .
+        echo "部署完毕"
     runAs: 0:0
     useTTY: true
     condition: SUCCESSFUL
