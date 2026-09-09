@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <base href="/rtve/"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cine RTVE Play en tu móvil | Descarga el APK gratis</title>
+    <meta name="description" content="App Android no oficial para ver el catálogo de cine de RTVE Play: cine español, clásicos y estrenos internacionales, gratis y sin suscripción. Descarga el APK.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#0B0C0C">
+    <link rel="icon" href="https://css.rtve.es/css/rtve.2021/i/rtve-logos/logos_plus/logo_playPlus_ffffff.svg">
+    <link rel="canonical" href="https://www.rtve.es/play/cine/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Cine RTVE Play en tu móvil | Descarga el APK gratis">
+    <meta property="og:description" content="Cine español, clásicos y estrenos internacionales. Gratis, sin suscripción y sin registro.">
+    <meta property="og:image" content="https://img.rtve.es/imagenes/cine-portada-play/01782471799216.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cine RTVE Play en tu móvil | Descarga el APK gratis">
+    <meta name="twitter:description" content="Cine español, clásicos y estrenos internacionales. Gratis, sin suscripción y sin registro.">
+    <meta name="twitter:image" content="https://img.rtve.es/imagenes/cine-portada-play/01782471799216.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://img.rtve.es">
+    <link rel="preconnect" href="https://connect.facebook.net">
+
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=2125224291749145&ev=PageView&noscript=1"></noscript>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme { --color-ink: #0B0C0C; --color-brand: #A30950; --color-accent: #FF4D8D; --color-deep: #005054; --font-display: "Anton", system-ui, sans-serif; --font-sans: "Manrope", system-ui, sans-serif; }
+    </style>
+
+    <style>
+        .fade-x {
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .fade-radial {
+            -webkit-mask-image: radial-gradient(120% 90% at 50% 35%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(120% 90% at 50% 35%, #000 20%, transparent 75%);
+        }
+
+        .marquee {
+            animation: slide-left 80s linear infinite;
+        }
+
+        .marquee-reverse {
+            animation: slide-right 95s linear infinite;
+        }
+
+        @keyframes slide-left {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                transform: translate3d(-50%, 0, 0);
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .rise {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards;
+        }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee,
+            .marquee-reverse {
+                animation: none;
+            }
+            .rise {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-ink font-sans text-white antialiased selection:bg-brand selection:text-white">
+
+    <!-- HERO -->
+    <header class="relative isolate overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
+            <div class="fade-radial grid scale-110 grid-cols-4 gap-2 opacity-[0.13] blur-[3px] sm:grid-cols-6 lg:grid-cols-8">
+                <img src="https://img.rtve.es/v/16670891/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16682967/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16688936/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16717917/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16763360/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16782249/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16793458/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16803578/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16815504/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16824770/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16836878/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16847016/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16864328/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16887669/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16895522/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16906033/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16923086/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16940081/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16941685/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16944153/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16945752/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16945812/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16955566/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+                <img src="https://img.rtve.es/v/16973702/vertical2/?h=400" alt="" class="aspect-[2/3] w-full object-cover">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/70 to-ink"></div>
+        </div>
+
+        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+            <div class="absolute -top-40 right-[-15%] h-[65vh] w-[70vw] rounded-full bg-deep/40 blur-[130px]"></div>
+            <div class="absolute -bottom-52 left-[-15%] h-[55vh] w-[65vw] rounded-full bg-brand/25 blur-[130px]"></div>
+        </div>
+
+        <div class="mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-between px-5 py-8 sm:px-8 sm:py-10">
+            <div class="flex items-center gap-3">
+                <img src="https://css.rtve.es/css/rtve.2021/i/rtve-logos/logos_plus/logo_playPlus_ffffff.svg" alt="RTVE Play" class="h-6 w-auto opacity-90 sm:h-7">
+                <span class="font-display text-lg uppercase tracking-wide text-white/70 sm:text-xl">Cine</span>
+            </div>
+
+            <div class="max-w-4xl py-16">
+                <p class="rise flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.25em] text-accent sm:text-sm">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent"></span> App no oficial para Android
+                </p>
+
+                <h1 class="rise mt-5 font-display text-[clamp(3.2rem,12vw,8.5rem)] uppercase leading-[0.85] tracking-[-0.01em]" style="animation-delay:.1s">
+                    Cine gratis,<br>sin suscripción
+                </h1>
+
+                <p class="rise mt-7 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl" style="animation-delay:.2s">
+                    Todo el catálogo de cine de RTVE Play —cine español, clásicos y títulos internacionales— en una app que se abre directa en las películas.
+                </p>
+
+                <div class="rise mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center" style="animation-delay:.3s">
+                    <a data-descarga href="/download" class="inline-flex w-full items-center justify-center rounded-full bg-brand px-9 py-4 text-base font-bold tracking-wide text-white shadow-lg shadow-brand/25 transition duration-200 hover:bg-[#c00b62] hover:shadow-xl hover:shadow-brand/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand active:scale-[0.98] sm:w-auto">
+            Descargar APK
+          </a>
+                    <span class="text-sm text-white/45">Android &middot; Archivo APK &middot; Sin registro</span>
+                </div>
+            </div>
+
+            <div class="hidden text-sm text-white/35 sm:block">Desliza para ver qué hay dentro</div>
+        </div>
+    </header>
+
+    <!-- MURO DE PÓSTERS -->
+    <section class="overflow-hidden py-14 sm:py-20" aria-label="Carteles disponibles en el catálogo">
+        <p class="mx-auto mb-8 max-w-6xl px-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/40 sm:px-8">
+            En el catálogo ahora mismo
+        </p>
+
+        <div class="fade-x space-y-3">
+            <div class="marquee-track flex w-max marquee">
+                <ul class="flex gap-3 pr-3">
+                    <li><img src="https://img.rtve.es/v/15933780/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/15960272/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/15979648/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16106354/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16181600/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16211472/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16235524/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16243381/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16254110/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16262707/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16430035/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16448512/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                </ul>
+            </div>
+
+            <div class="marquee-track flex w-max marquee-reverse">
+                <ul class="flex gap-3 pr-3">
+                    <li><img src="https://img.rtve.es/v/16449817/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16470369/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16480631/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16490825/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16533181/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16535303/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16541689/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16596509/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16607876/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16616277/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16639424/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                    <li><img src="https://img.rtve.es/v/16642558/vertical2/?h=400" alt="" loading="lazy" class="h-40 w-auto rounded-lg object-cover md:h-56"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUÉ VAS A VER -->
+    <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+        <h2 class="font-display text-[clamp(2.2rem,6vw,4rem)] uppercase leading-[0.9] tracking-[-0.01em]">
+            Qué vas a ver
+        </h2>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
+            Cientos de películas completas, gratis y sin cuenta. El mismo catálogo público de RTVE Play, ordenado por sus colecciones de siempre.
+        </p>
+
+        <div class="mt-14">
+            <article class="grid gap-3 border-t border-white/10 py-8 md:grid-cols-[14rem_1fr] md:gap-10">
+                <h3 class="font-display text-xl uppercase tracking-wide">Somos cine</h3>
+                <div>
+                    <p class="text-white/70">El cine español reciente, el de los Goya.</p>
+                    <p class="mt-3 text-sm leading-relaxed text-white/40">
+                        El buen patrón &middot; As bestas &middot; Tarde para la ira &middot; Alcarràs &middot; Cinco lobitos &middot; Robot dreams &middot; Campeones
+                    </p>
+                </div>
+            </article>
+
+            <article class="grid gap-3 border-t border-white/10 py-8 md:grid-cols-[14rem_1fr] md:gap-10">
+                <h3 class="font-display text-xl uppercase tracking-wide">Cine de siempre</h3>
+                <div>
+                    <p class="text-white/70">Clásicos que no se caen del catálogo.</p>
+                    <p class="mt-3 text-sm leading-relaxed text-white/40">
+                        La vaquilla &middot; ¡Ay, Carmela! &middot; Las bicicletas son para el verano &middot; La gata sobre el tejado de zinc
+                    </p>
+                </div>
+            </article>
+
+            <article class="grid gap-3 border-t border-white/10 py-8 md:grid-cols-[14rem_1fr] md:gap-10">
+                <h3 class="font-display text-xl uppercase tracking-wide">Cine internacional</h3>
+                <div>
+                    <p class="text-white/70">Dramas, comedias y thrillers de todo el mundo.</p>
+                    <p class="mt-3 text-sm leading-relaxed text-white/40">
+                        Ad Astra &middot; Crazy, Stupid, Love &middot; El secreto de Adaline &middot; El reino animal &middot; Amal
+                    </p>
+                </div>
+            </article>
+
+            <article class="grid gap-3 border-t border-white/10 py-8 md:grid-cols-[14rem_1fr] md:gap-10">
+                <h3 class="font-display text-xl uppercase tracking-wide">Cine Club Play</h3>
+                <div>
+                    <p class="text-white/70">Las premiadas que hay que haber visto.</p>
+                    <p class="mt-3 text-sm leading-relaxed text-white/40">
+                        Días contados &middot; La buena estrella &middot; El bosque animado &middot; Nadie hablará de nosotras cuando hayamos muerto
+                    </p>
+                </div>
+            </article>
+
+            <article class="grid gap-3 border-y border-white/10 py-8 md:grid-cols-[14rem_1fr] md:gap-10">
+                <h3 class="font-display text-xl uppercase tracking-wide">Cine en familia</h3>
+                <div>
+                    <p class="text-white/70">Para ver con los peques.</p>
+                    <p class="mt-3 text-sm leading-relaxed text-white/40">
+                        Los futbolísimos &middot; El padre de la novia &middot; Robot dreams
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- DIRECTO -->
+    <section class="border-y border-white/10 bg-deep/25">
+        <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+            <div class="flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+                <span class="h-2 w-2 rounded-full bg-accent"></span> En directo &middot; RTVE Somos Cine
+            </div>
+            <h2 class="mt-6 max-w-3xl font-display text-[clamp(1.9rem,5vw,3.2rem)] uppercase leading-[0.95]">
+                Y cuando no sepas qué elegir
+            </h2>
+            <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/65">
+                El canal RTVE Somos Cine emite las 24 horas. Lo abres y ya hay una película empezada.
+            </p>
+        </div>
+    </section>
+
+    <!-- POR QUÉ LA APP -->
+    <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+        <h2 class="font-display text-[clamp(2.2rem,6vw,4rem)] uppercase leading-[0.9] tracking-[-0.01em]">
+            Por qué en app
+        </h2>
+
+        <div class="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
+            <div>
+                <span class="font-display text-3xl text-accent">01</span>
+                <h3 class="mt-3 text-lg font-bold">A pantalla completa</h3>
+                <p class="mt-2 leading-relaxed text-white/60">
+                    Sin barra de direcciones ni pestañas alrededor. Solo la película.
+                </p>
+            </div>
+            <div>
+                <span class="font-display text-3xl text-accent">02</span>
+                <h3 class="mt-3 text-lg font-bold">A un toque</h3>
+                <p class="mt-2 leading-relaxed text-white/60">
+                    Un icono en tu pantalla de inicio que abre directamente la sección de cine.
+                </p>
+            </div>
+            <div>
+                <span class="font-display text-3xl text-accent">03</span>
+                <h3 class="mt-3 text-lg font-bold">El mismo catálogo</h3>
+                <p class="mt-2 leading-relaxed text-white/60">
+                    Lo que ves en la app es rtve.es/play/cine, tal cual y actualizado a diario.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="descargar" class="relative isolate overflow-hidden border-t border-white/10">
+        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+            <div class="absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/20 blur-[130px]"></div>
+        </div>
+
+        <div class="mx-auto max-w-6xl px-5 py-24 text-center sm:px-8 sm:py-32">
+            <h2 class="mx-auto max-w-3xl font-display text-[clamp(2.4rem,8vw,5.5rem)] uppercase leading-[0.88] tracking-[-0.01em]">
+                Descárgala y empieza a ver
+            </h2>
+            <p class="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-white/65">
+                Un archivo, una instalación, y el cine de RTVE Play en tu pantalla de inicio.
+            </p>
+            <a data-descarga href="/download" class="mt-10 inline-flex w-full items-center justify-center rounded-full bg-brand px-10 py-4 text-base font-bold tracking-wide text-white shadow-lg shadow-brand/25 transition duration-200 hover:bg-[#c00b62] hover:shadow-xl hover:shadow-brand/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand active:scale-[0.98] sm:w-auto">
+        Descargar APK
+      </a>
+            <p class="mt-5 text-sm text-white/40">Android &middot; Archivo APK &middot; Sin registro</p>
+        </div>
+    </section>
+
+    <!-- PIE -->
+    <footer class="border-t border-white/10 px-5 py-14 sm:px-8">
+        <div class="mx-auto max-w-6xl">
+            <p class="max-w-3xl text-sm leading-relaxed text-white/45">
+                Esta es una aplicación no oficial y no está afiliada a RTVE. Todo el contenido, las marcas y los derechos pertenecen a la Corporación de Radio y Televisión Española. La app únicamente muestra el sitio web público
+                <a href="https://www.rtve.es/play/cine/" target="_blank" rel="noopener" class="text-white/70 underline underline-offset-4 hover:text-white">rtve.es/play/cine</a>.
+            </p>
+
+            <nav class="mt-8 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/55">
+                <a href="https://www.rtve.es/play/cine/" target="_blank" rel="noopener" class="hover:text-white">Ver en RTVE Play</a>
+                <a href="https://www.rtve.es/comunes/aviso_legal.html" target="_blank" rel="noopener" class="hover:text-white">Aviso legal</a>
+                <a href="https://www.rtve.es/comunes/politica_privacidad.html" target="_blank" rel="noopener" class="hover:text-white">Política de privacidad</a>
+                <a href="https://www.rtve.es/comunes/politica_cookies.html" target="_blank" rel="noopener" class="hover:text-white">Política de cookies</a>
+                <a href="https://www.rtve.es/comunes/accesibilidad.shtml" target="_blank" rel="noopener" class="hover:text-white">Accesibilidad</a>
+            </nav>
+
+            <p class="mt-8 text-xs text-white/30">
+                &copy; Corporación de Radio y Televisión Española. Carteles e imágenes propiedad de RTVE.
+            </p>
+        </div>
+    </footer>
+
+    <!-- BARRA FIJA MÓVIL -->
+    <div id="barra-movil" class="fixed inset-x-0 bottom-0 z-50 translate-y-full border-t border-white/10 bg-ink/85 px-4 py-3 opacity-0 backdrop-blur-md transition duration-300 sm:hidden">
+        <a data-descarga href="/download" class="flex w-full items-center justify-center rounded-full bg-brand px-6 py-3.5 text-base font-bold text-white transition active:scale-[0.98]">
+      Descargar APK
+    </a>
+    </div>
+    <div class="h-20 sm:hidden" aria-hidden="true"></div>
+
+    <script>
+        const PIXEL_ID = "2125224291749145"; // Meta Pixel
+
+        function idEvento() {
+            if (crypto.randomUUID) return crypto.randomUUID();
+            return "ev_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+        }
+
+        function leerCookie(nombre) {
+            const m = document.cookie.match(new RegExp("(?:^|; )" + nombre.replace(/[.$?*|{}()[\]\\/+^]/g, "\\$&") + "=([^;]*)"));
+            return m ? decodeURIComponent(m[1]) : "";
+        }
+
+        function fbcActual() {
+            const existente = leerCookie("_fbc");
+            if (existente) return existente;
+            const fbclid = new URLSearchParams(location.search).get("fbclid");
+            if (!fbclid) return "";
+            return "fb.1." + Date.now() + "." + fbclid;
+        }
+
+        function enviarCapi(nombre, id) {
+            fetch("/api/capi", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    event_name: nombre,
+                    event_id: id,
+                    fbp: leerCookie("_fbp"),
+                    fbc: fbcActual(),
+                    event_source_url: location.href.split("#")[0],
+                }),
+                keepalive: true,
+            }).catch(function() {});
+        }
+
+        const pageViewId = idEvento();
+        fbq("init", PIXEL_ID);
+        fbq("track", "PageView", {}, {
+            eventID: pageViewId
+        });
+        setTimeout(function() {
+            enviarCapi("PageView", pageViewId);
+        }, 400);
+
+        document.querySelectorAll("[data-descarga]").forEach(function(enlace) {
+            enlace.addEventListener("click", function(evento) {
+                if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey || evento.button !== 0) return;
+                evento.preventDefault();
+
+                const subscribeId = idEvento();
+                fbq("track", "Subscribe", {
+                    content_name: "APK download"
+                }, {
+                    eventID: subscribeId
+                });
+                enviarCapi("Subscribe", subscribeId);
+
+                const destino = new URL("/download", location.origin);
+                destino.searchParams.set("eid", subscribeId);
+                location.href = destino.toString();
+            });
+        });
+
+        // Duplica cada fila de carteles para que el desplazamiento sea continuo.
+        document.querySelectorAll(".marquee-track").forEach(function(track) {
+            const row = track.firstElementChild;
+            const copy = row.cloneNode(true);
+            copy.setAttribute("aria-hidden", "true");
+            track.appendChild(copy);
+        });
+
+        // La barra fija solo aparece cuando el botón del hero deja de verse.
+        const barra = document.getElementById("barra-movil");
+        const botonHero = document.querySelector("header [data-descarga]");
+
+        if (barra && botonHero && "IntersectionObserver" in window) {
+            new IntersectionObserver(function(entries) {
+                const fuera = !entries[0].isIntersecting;
+                barra.classList.toggle("translate-y-full", !fuera);
+                barra.classList.toggle("opacity-0", !fuera);
+            }).observe(botonHero);
+        }
+    </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"6533a65ee6fc4a5490f5096819f80985","r":1,"spa":2}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

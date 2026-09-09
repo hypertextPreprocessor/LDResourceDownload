@@ -66,7 +66,8 @@ func downloadResource(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 	var key []byte = []byte("QqH3+847'39(8#37djOvhfjlsi%kf@=]")
-	url := fmt.Sprintf("https://atraer.s3.us-west-1.amazonaws.com/resource/%s", name.Name)
+	var cdnURl = "https://258b.tv/resource"
+	url := fmt.Sprintf("%s%s", cdnURl, name.Name)
 	resp, err := http.Get(url)
 	if err != nil {
 		http.Error(w, "error", http.StatusInternalServerError)
