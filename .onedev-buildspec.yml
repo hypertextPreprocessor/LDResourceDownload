@@ -49,10 +49,13 @@ jobs:
       shell: sh
       commands: |
         ssh -o StrictHostKeyChecking=no admin@@95.169.1.226 << 'EOF'
+        sudo sytemctl stop puta
         go version
         cd /home/admin/webroot/LDResourceDownload/
         go build -o puta .
         echo "构建完成"
+        sudo sytemctl start puta
+        echo "应用已经启动..."
         EOF
     runAs: 0:0
     useTTY: true
