@@ -1,6 +1,7 @@
 version: 53
 jobs:
 - name: CI
+  jobExecutor: LDY-executor
   steps:
   - type: CommandStep
     name: Deploy
