@@ -1,7 +1,7 @@
 version: 53
 jobs:
 - name: CI
-  jobExecutor: LDY-shell-executor
+  jobExecutor: LDY-executor
   steps:
   - type: CheckoutStep
     name: CheckoutStep
