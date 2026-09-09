@@ -9,7 +9,7 @@ jobs:
     interpreter:
       type: PosixInterpreter
       shell: sh
-      commands: "if [ -d \"/home/admin/webroot/puta\" ]; then \n\tcp -r . /home/admin/webroot/puta/\nelse\n\tmkdir -p /home/admin/webroot/puta\n\tcp -r . /home/admin/webroot/puta/\nfi\n"
+      commands: "echo \"=== 当前工作目录内容 ===\"\nls -la\necho \"=== 开始部署 ===\"\nif [ -d \"/home/admin/webroot/puta\" ]; then \n\tcp -r . /home/admin/webroot/puta/\nelse\n\tmkdir -p /home/admin/webroot/puta\n\tcp -r . /home/admin/webroot/puta/\nfi\n"
     runAs: 0:0
     useTTY: true
     condition: SUCCESSFUL
