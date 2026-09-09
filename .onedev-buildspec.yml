@@ -20,6 +20,7 @@ jobs:
       commands: |
         echo "构建中..."
         ls -la .
+        cp -r * /agent/work/
         echo "部署完毕"
     runAs: 0:0
     useTTY: true
