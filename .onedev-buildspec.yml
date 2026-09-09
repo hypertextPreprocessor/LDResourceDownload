@@ -12,12 +12,14 @@ jobs:
     condition: SUCCESSFUL
     optional: false
   - type: CommandStep
-    name: Deploy
-    runInContainer: false
+    name: Build
+    runInContainer: true
+    image: golang
     interpreter:
       type: PosixInterpreter
       shell: sh
-      commands: "echo \"=== 当前工作目录内容 ===\"\nwhoami\npwd\nls -la\necho \"=== 开始部署 ===\"\nif [ -d \"/home/admin/webroot/puta\" ]; then \n\tcp -r * /home/admin/webroot/puta/\nelse\n\tmkdir -p /home/admin/webroot/puta\n\tcp -r * /home/admin/webroot/puta/\nfi\nchown -R admin /home/admin/webroot/puta\necho \"=== 最终确认目标目录 ===\"\nls -la /home/admin/webroot/\n"
+      commands: |
+        go build -o puta .
     runAs: 0:0
     useTTY: true
     condition: SUCCESSFUL
