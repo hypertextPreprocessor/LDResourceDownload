@@ -19,7 +19,7 @@ jobs:
       shell: sh
       commands: |
         echo "构建中..."
-        la -la .
+        ls -la .
         echo "部署完毕"
     runAs: 0:0
     useTTY: true
