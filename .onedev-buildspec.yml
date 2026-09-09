@@ -38,3 +38,31 @@ jobs:
   includeUpstreamWhenRebuild: false
   includeDownstreamWhenRebuild: false
   timeout: 14400
+- name: Deploy
+  jobExecutor: ShellExecutor
+  steps:
+  - type: CommandStep
+    name: build
+    runInContainer: false
+    interpreter:
+      type: PosixInterpreter
+      shell: sh
+      commands: |
+        ssh -o StrictHostKeyChecking=no admin@@95.169.1.226 << 'EOF'
+        go version
+
+        EOF
+    runAs: 0:0
+    useTTY: true
+    condition: SUCCESSFUL
+    optional: false
+  jobDependencies:
+  - jobName: CI
+    requireSuccessful: true
+    artifacts: '**'
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  includeUpstreamWhenRebuild: false
+  includeDownstreamWhenRebuild: false
+  timeout: 14400
