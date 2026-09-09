@@ -50,7 +50,9 @@ jobs:
       commands: |
         ssh -o StrictHostKeyChecking=no admin@@95.169.1.226 << 'EOF'
         go version
-
+        cd /home/admin/webroot/LDResourceDownload/
+        go build -o puta .
+        echo "构建完成"
         EOF
     runAs: 0:0
     useTTY: true
