@@ -9,7 +9,7 @@ jobs:
     interpreter:
       type: PosixInterpreter
       shell: sh
-      commands: "if [[ -d \"/home/admin/webroot/puta\" ]]; then \n\tgit clone ssh://hulutv.vip:6611/LdyPage/puta.git /home/admin/webroot\nelse\n\tgit pull\nfi\n"
+      commands: "if [[ -d \"/home/admin/webroot/puta\" ]]; then \n\tgit pull\n\t\nelse\n\tgit clone ssh://hulutv.vip:6611/LdyPage/puta.git /home/admin/webroot\n\tgit pull\nfi\n"
     runAs: 0:0
     useTTY: true
     condition: SUCCESSFUL
