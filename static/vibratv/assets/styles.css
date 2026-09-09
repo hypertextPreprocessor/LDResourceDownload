@@ -2154,3 +2154,596 @@
         opacity: .5
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================
+   RECOMPENSAS + GUIA DE INSTALACION
+================================== */
+
+.rewards-install{
+
+    position:relative;
+
+    padding:110px 0 120px;
+
+    overflow:hidden;
+
+    background:linear-gradient(180deg,#0b0f19 0%,#170a2b 45%,#0b0f19 100%);
+
+    border-top:1px solid rgba(168,85,247,.18);
+    border-bottom:1px solid rgba(168,85,247,.18);
+
+}
+
+.rewards-install .ri-glow{
+
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+            radial-gradient(600px 400px at 22% 35%,rgba(168,85,247,.30),transparent 70%),
+            radial-gradient(600px 400px at 80% 65%,rgba(236,72,153,.22),transparent 70%);
+
+}
+
+.rewards-install .container{
+    position:relative;
+    z-index:2;
+}
+
+.ri-heading{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.ri-kicker{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:9px 20px;
+    margin-bottom:22px;
+
+    border-radius:999px;
+
+    background:rgba(255,201,60,.12);
+    border:1px solid rgba(255,201,60,.45);
+
+    color:#ffd76a;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.3px;
+
+}
+
+.ri-heading h2{
+
+    font-size:clamp(30px,4.4vw,50px);
+    font-weight:800;
+    line-height:1.2;
+
+    margin-bottom:18px;
+
+}
+
+.ri-heading h2 span{
+
+    background:linear-gradient(90deg,#e879f9 0%,#a855f7 60%,#7dd3fc 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.ri-heading p{
+
+    max-width:720px;
+    margin:auto;
+
+    color:var(--text-soft);
+    font-size:17px;
+
+}
+
+.ri-heading p strong{
+    color:#ffffff;
+}
+
+.ri-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1.05fr;
+    gap:56px;
+
+    align-items:center;
+
+}
+
+/* ---------- Visual de recompensas ---------- */
+
+.ri-visual{
+
+    position:relative;
+
+    text-align:center;
+
+}
+
+.ri-visual > img{
+
+    width:100%;
+    max-width:460px;
+
+    margin:auto;
+
+    border-radius:28px;
+
+    filter:drop-shadow(0 25px 60px rgba(168,85,247,.45));
+
+    animation:ri-float 6s ease-in-out infinite;
+
+}
+
+@keyframes ri-float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-14px); }
+}
+
+.ri-seal{
+
+    position:absolute;
+    top:6%;
+    right:2%;
+
+    width:110px;
+    height:110px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(140deg,#ffd76a,#f59e0b);
+
+    color:#3b1d00;
+    text-align:center;
+    line-height:1.15;
+
+    box-shadow:0 10px 30px rgba(245,158,11,.55);
+
+    transform:rotate(-8deg);
+
+}
+
+.ri-seal strong{
+    font-size:14px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.ri-seal span{
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.ri-brands{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+
+    margin-top:26px;
+
+}
+
+.brand-chip{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:12px 26px;
+
+    border-radius:14px;
+
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.2px;
+
+}
+
+.brand-amazon{
+
+    background:#141821;
+    color:#ffffff;
+
+    border:1px solid rgba(255,153,0,.55);
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+
+}
+
+.brand-amazon::after{
+
+    content:"";
+
+    display:block;
+    width:22px;
+    height:2px;
+
+    margin-left:8px;
+
+    border-radius:2px;
+    background:#ff9900;
+
+}
+
+.brand-meli{
+
+    background:#ffe600;
+    color:#2d3277;
+
+    border:1px solid rgba(255,230,0,.9);
+    box-shadow:0 8px 24px rgba(255,230,0,.25);
+
+}
+
+/* ---------- Pasos de instalacion ---------- */
+
+.ri-steps{
+
+    padding:36px 34px 34px;
+
+    border-radius:26px;
+
+    background:rgba(17,10,32,.72);
+    border:1px solid rgba(168,85,247,.30);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.ri-steps h3{
+
+    font-size:26px;
+    font-weight:800;
+
+    margin-bottom:26px;
+
+}
+
+.steps-list{
+
+    list-style:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.step-card{
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:18px 20px 18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.step-card:hover{
+
+    transform:translateX(6px);
+
+    background:rgba(168,85,247,.10);
+    border-color:rgba(232,121,249,.45);
+
+}
+
+.step-card-hot{
+
+    background:linear-gradient(90deg,rgba(255,201,60,.10),rgba(168,85,247,.10));
+    border-color:rgba(255,201,60,.40);
+
+}
+
+.step-num{
+
+    position:absolute;
+    top:-11px;
+    left:-11px;
+
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#a855f7,#e879f9);
+
+    font-size:15px;
+    font-weight:800;
+
+    box-shadow:0 6px 18px rgba(168,85,247,.6);
+
+}
+
+.step-icon{
+
+    width:64px;
+    height:64px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 6px 16px rgba(168,85,247,.5));
+
+}
+
+.step-text h4{
+
+    font-size:18px;
+    font-weight:700;
+
+    margin-bottom:5px;
+
+}
+
+.step-text p{
+
+    color:var(--text-soft);
+    font-size:15px;
+    line-height:1.55;
+
+}
+
+.step-text strong{
+    color:#ffd76a;
+}
+
+.ri-cta{
+
+    width:100%;
+
+    padding:20px 28px;
+
+    font-size:19px;
+
+    background:linear-gradient(90deg,#a855f7,#e879f9);
+
+    box-shadow:0 14px 40px rgba(168,85,247,.45);
+
+    animation:ri-pulse 2.6s ease-in-out infinite;
+
+}
+
+@keyframes ri-pulse{
+    0%,100%{ box-shadow:0 14px 40px rgba(168,85,247,.40); }
+    50%{ box-shadow:0 14px 55px rgba(232,121,249,.75); }
+}
+
+.ri-legal{
+
+    display:block;
+
+    margin-top:14px;
+
+    text-align:center;
+
+    color:#9aa3b5;
+    font-size:12.5px;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:992px){
+
+    .ri-grid{
+        grid-template-columns:1fr;
+        gap:44px;
+    }
+
+    .ri-visual > img{
+        max-width:380px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .rewards-install{
+        padding:80px 0 90px;
+    }
+
+    .ri-heading{
+        margin-bottom:44px;
+    }
+
+    .ri-steps{
+        padding:28px 18px 24px;
+    }
+
+    .ri-steps h3{
+        font-size:22px;
+    }
+
+    .step-card{
+        gap:14px;
+        padding:16px 14px;
+    }
+
+    .step-icon{
+        width:52px;
+        height:52px;
+    }
+
+    .step-text h4{
+        font-size:16.5px;
+    }
+
+    .step-text p{
+        font-size:14px;
+    }
+
+    .ri-seal{
+        width:88px;
+        height:88px;
+        top:2%;
+        right:0;
+    }
+
+    .ri-seal strong{ font-size:12px; }
+    .ri-seal span{ font-size:11px; }
+
+    .hero-reward-pill{
+        font-size:14px;
+        padding:12px 16px;
+        gap:10px;
+    }
+
+    .logo-text{
+        font-size:21px;
+    }
+
+    .ri-cta{
+        padding:18px 20px;
+        font-size:16px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .brand-chip{
+        padding:10px 18px;
+        font-size:15px;
+    }
+
+    .step-card{
+        flex-direction:column;
+        align-items:flex-start;
+        text-align:left;
+    }
+
+    .step-icon{
+        width:46px;
+        height:46px;
+    }
+
+    .logo img{
+        height:38px;
+    }
+
+    .logo-text{
+        font-size:18px;
+    }
+
+}
+
+/* ---------- Ajustes de cabecera con la marca en texto ---------- */
+
+.header .logo{
+    flex-shrink:0;
+    margin-right:26px;
+}
+
+.header .nav{
+    gap:30px;
+}
+
+@media (max-width:1150px){
+
+    .header .nav{
+        gap:22px;
+        font-size:15px;
+    }
+
+    .logo-text{
+        font-size:22px;
+    }
+
+}
+
+.brand-amazon::after{
+    width:26px;
+    height:9px;
+    margin-left:10px;
+    background:none;
+    border-bottom:3px solid #ff9900;
+    border-radius:0 0 50% 50% / 0 0 100% 100%;
+}
+
+@media (max-width:768px){
+
+    .ri-seal strong{ font-size:10.5px; letter-spacing:-.2px; }
+    .ri-seal span{ font-size:10.5px; }
+
+}
+
+.ri-seal{
+    padding:0 10px;
+}
+
+.ri-seal strong{
+    font-size:12px;
+    letter-spacing:-.2px;
+}
+
+.ri-seal span{
+    font-size:12px;
+}
+
+@media (max-width:768px){
+
+    .ri-seal strong,
+    .ri-seal span{
+        font-size:10px;
+    }
+
+}
