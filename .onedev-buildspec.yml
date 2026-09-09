@@ -1,0 +1,27 @@
+version: 53
+jobs:
+- name: CI
+  steps:
+  - type: CommandStep
+    name: Deploy
+    runInContainer: false
+    interpreter:
+      type: PosixInterpreter
+      shell: sh
+      commands: "if [[ -d \"/home/admin/webroot/puta\" ]]; then \n\tgit clone ssh://hulutv.vip:6611/LdyPage/puta.git /home/admin/webroot\nelse\n\tgit pull\nfi\n"
+    runAs: 0:0
+    useTTY: true
+    condition: SUCCESSFUL
+    optional: false
+  triggers:
+  - type: BranchUpdateTrigger
+    branches: main
+    paths: -.onedev-buildspec.yml
+    userMatch: anyone
+    projects: LdyPage/puta
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  includeUpstreamWhenRebuild: false
+  includeDownstreamWhenRebuild: false
+  timeout: 14400
