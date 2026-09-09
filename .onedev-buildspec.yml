@@ -3,6 +3,14 @@ jobs:
 - name: CI
   jobExecutor: LDY-shell-executor
   steps:
+  - type: CheckoutStep
+    name: CheckoutStep
+    cloneCredential:
+      type: DefaultCredential
+    withLfs: false
+    withSubmodules: false
+    condition: SUCCESSFUL
+    optional: false
   - type: CommandStep
     name: Deploy
     runInContainer: false
